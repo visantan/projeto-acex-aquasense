@@ -1,0 +1,10 @@
+.gauge-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.gauge-label {
+  font-size: 18px;
+  color: #003366;
+  margin-top: 8px;
+}
