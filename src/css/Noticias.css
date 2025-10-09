@@ -1,0 +1,35 @@
+.noticias-container {
+  padding: 20px;
+}
+
+.lista-noticias {
+  list-style: none;
+  padding: 0;
+}
+
+.noticia-item {
+  margin-bottom: 20px;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  transition: background 0.3s;
+}
+
+.noticia-item:hover {
+  background: #f5f5f5;
+}
+
+.noticia-item h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #0077cc;
+}
+
+.noticia-item p {
+  margin: 8px 0;
+  color: #444;
+}
+
+.noticia-item span {
+  font-size: 0.9rem;
+  color: #888;
+}

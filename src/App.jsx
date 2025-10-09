@@ -6,6 +6,8 @@ import Agendamento from './pages/Agendamento';
 import Mapa from './pages/Mapa';
 import Contatos from './pages/Contatos';
 import Campanhas from './pages/Campanhas';
+import Historico from './pages/Historico';
+import Noticias from './pages/Noticias';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="mapa" element={<Mapa />} />
           <Route path="contatos" element={<Contatos />} />
           <Route path="campanhas" element={<Campanhas />} />
+          <Route path="historico" element={<Historico />} />
+          <Route path="noticias" element={<Noticias />} />
         </Route>
       </Routes>
     </Router>

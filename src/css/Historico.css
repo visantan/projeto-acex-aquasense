@@ -1,0 +1,37 @@
+.historico-page {
+  padding: 20px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 12px;
+  width: 250px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  background: #e0e0e0;
+}
+
+.card.ativo {
+  background: #d0ebff;
+}
+
+.historico-detalhes {
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.registro {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
