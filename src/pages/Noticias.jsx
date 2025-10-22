@@ -8,7 +8,7 @@ function Noticias() {
   useEffect(() => {
     const buscarNoticias = async () => {
       try {
-        const response = await fetch('api-data-aquasense.vercel.app/api/noticias');
+        const response = await fetch('https://api-data-aquasense.vercel.app/api/noticias');
         const data = await response.json();
         setNoticias(data);
       } catch (error) {

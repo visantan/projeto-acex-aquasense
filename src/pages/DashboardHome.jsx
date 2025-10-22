@@ -41,7 +41,7 @@ function DashboardHome() {
     if (!ruaBusca.trim()) return;
 
     try {
-      const response = await fetch(`api-data-aquasense.vercel.app/api/rua/${encodeURIComponent(ruaBusca.trim())}`);
+      const response = await fetch(`https://api-data-aquasense.vercel.app/api/rua/${encodeURIComponent(ruaBusca.trim())}`);
       if (!response.ok) {
         setResultado({
           nome: ruaBusca,
