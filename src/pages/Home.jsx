@@ -20,9 +20,14 @@ function Home() {
         Aqui você encontrará dados atualizados, dicas de consumo consciente e um mapa interativo com pontos de vazamento.
       </p>
 
-      <Link to="/dashboard">
-        <button className="home-button">Acessar Dashboard</button>
-      </Link>
+      <div className="home-buttons">
+        <Link to="/dashboard/login">
+          <button className="home-button">🔐 Login</button>
+        </Link>
+        <Link to="/dashboard/cadastro">
+          <button className="home-button">📝 Cadastro</button>
+        </Link>
+      </div>
     </div>
   );
 }

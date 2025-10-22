@@ -120,3 +120,41 @@
   font-size: 18px;
   color: #003366;
 }
+
+.card.expandido {
+  background-color: #f0f8ff;
+  transition: all 0.3s ease;
+}
+
+.parametros-qualidade {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.parametros-qualidade li {
+  margin-bottom: 6px;
+}
+
+.classificacao-consumo {
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+.classificacao-consumo table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.classificacao-consumo th,
+.classificacao-consumo td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.classificacao-consumo th {
+  background-color: #f0f0f0;
+}

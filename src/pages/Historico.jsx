@@ -4,6 +4,7 @@ import '../css/Historico.css';
 function Historico() {
   const [historico, setHistorico] = useState([]);
   const [selecionada, setSelecionada] = useState(null);
+  const [busca, setBusca] = useState('');
 
   useEffect(() => {
     const fetchHistorico = async () => {
@@ -37,11 +38,25 @@ function Historico() {
     });
   });
 
+  const ruasFiltradas = Object.entries(ruasAgrupadas).filter(([_, rua]) =>
+    rua.nome.toLowerCase().includes(busca.toLowerCase())
+  );
+
   return (
     <div className="historico-page">
       <h2>📊 Histórico de Consumo e Qualidade</h2>
+
+      <div className="campo-busca">
+        <input
+          type="text"
+          placeholder="🔍 Buscar rua..."
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+        />
+      </div>
+
       <div className="cards-container">
-        {Object.entries(ruasAgrupadas).map(([id, rua]) => (
+        {ruasFiltradas.map(([id, rua]) => (
           <div
             key={id}
             className={`card ${selecionada === id ? 'ativo' : ''}`}

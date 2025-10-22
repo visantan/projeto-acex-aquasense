@@ -35,3 +35,17 @@
   margin-bottom: 10px;
   font-size: 14px;
 }
+
+.campo-busca {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.campo-busca input {
+  padding: 8px 12px;
+  font-size: 1rem;
+  width: 300px;
+  max-width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

@@ -8,7 +8,6 @@ ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale);
 
 const FORM_EMAIL = import.meta.env.VITE_FORM_EMAIL;
 
-
 const enviarAlertaEmail = async (dados) => {
   try {
     await fetch(`https://formsubmit.co/ajax/${FORM_EMAIL}`, {
@@ -29,11 +28,12 @@ const enviarAlertaEmail = async (dados) => {
   }
 };
 
-
 function DashboardHome() {
   const [ruaBusca, setRuaBusca] = useState('');
   const [resultado, setResultado] = useState(null);
   const [historicoConsumo, setHistoricoConsumo] = useState([]);
+  const [expandirQualidade, setExpandirQualidade] = useState(false);
+  const [expandirConsumo, setExpandirConsumo] = useState(false);
   const intervaloRef = useRef(null);
   const alertaEnviadoRef = useRef(false);
 
@@ -57,15 +57,16 @@ function DashboardHome() {
       }
 
       const data = await response.json();
+
       if (data.status?.qualidade > 90 && !alertaEnviadoRef.current) {
-          await enviarAlertaEmail(data);
-          alertaEnviadoRef.current = true;
-        }
+        await enviarAlertaEmail(data);
+        alertaEnviadoRef.current = true;
+      }
 
       if (data.status?.qualidade <= 90) {
-          alertaEnviadoRef.current = false;
-        }
-      
+        alertaEnviadoRef.current = false;
+      }
+
       setResultado(data);
 
       if (data.status?.consumo_agua !== undefined) {
@@ -77,7 +78,7 @@ function DashboardHome() {
   };
 
   const iniciarLoop = () => {
-    buscarRua(); // primeira chamada imediata
+    buscarRua();
     if (intervaloRef.current) clearInterval(intervaloRef.current);
     intervaloRef.current = setInterval(buscarRua, 1000);
   };
@@ -147,6 +148,7 @@ function DashboardHome() {
               : '—'}
           </p>
         </div>
+
         <div className="card">
           <h3>Obra na Região</h3>
           <p>
@@ -159,17 +161,79 @@ function DashboardHome() {
               : '—'}
           </p>
         </div>
-        <div className="card">
+
+        <div
+          className={`card ${expandirQualidade ? 'expandido' : ''}`}
+          onClick={() => setExpandirQualidade((prev) => !prev)}
+          style={{ cursor: 'pointer' }}
+        >
           <h3>Qualidade da Água</h3>
           <GaugeQualidadeSVG nivel={qualidadeValor || 0} />
           <p>{qualidadeTexto}</p>
+
+          {expandirQualidade && (
+            <ul className="parametros-qualidade">
+              <h4>Parâmetros de qualidade</h4>
+              <li>Temperatura da água</li>
+              <li>pH</li>
+              <li>Oxigênio dissolvido</li>
+              <li>Demanda Bioquímica de Oxigênio (DBO)</li>
+              <li>Coliformes Termotolerantes</li>
+              <li>Nitrogênio total</li>
+              <li>Fósforo total</li>
+              <li>Resíduos totais</li>
+              <li>Turbidez</li>
+            </ul>
+          )}
         </div>
-        <div className="card">
+
+        <div
+          className={`card ${expandirConsumo ? 'expandido' : ''}`}
+          onClick={() => setExpandirConsumo((prev) => !prev)}
+          style={{ cursor: 'pointer' }}
+        >
           <h3>Consumo de Água</h3>
           <p>{consumoValor ? `${consumoValor} L/min` : '—'}</p>
           {historicoConsumo.length > 1 && (
             <div style={{ height: '150px' }}>
               <Line data={consumoData} options={{ responsive: true, maintainAspectRatio: false }} />
+            </div>
+          )}
+
+          {expandirConsumo && (
+            <div className="classificacao-consumo">
+              <h4>Classificação de Consumo por Rua (L/min total)</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Consumo</th>
+                    <th>Classificação</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0 – 150</td>
+                    <td>Bom</td>
+                
+                  </tr>
+                  <tr>
+                    <td>151 – 300</td>
+                    <td>Médio</td>
+                    
+                  </tr>
+                  <tr>
+                    <td>301 – 500</td>
+                    <td>Alto</td>
+                   
+                  </tr>
+                  <tr>
+                    <td>&gt; 500</td>
+                    <td>Muito alto</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
             </div>
           )}
         </div>
