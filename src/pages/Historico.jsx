@@ -9,7 +9,7 @@ function Historico() {
   useEffect(() => {
     const fetchHistorico = async () => {
       try {
-        const response = await fetch('https://api-data-aquasense.vercel.app/api/historico');
+        const response = await fetch('http://localhost:5000/api/historico');
         const data = await response.json();
         setHistorico(data);
       } catch (error) {
