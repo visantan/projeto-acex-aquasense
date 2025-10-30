@@ -9,7 +9,7 @@ function Historico() {
   useEffect(() => {
     const fetchHistorico = async () => {
       try {
-        const response = await fetch('3.142.165.61:5000/api/historico');
+        const response = await fetch('http://api-aquasense.ddns.net:5000/api/historico');
         const data = await response.json();
         setHistorico(data);
       } catch (error) {

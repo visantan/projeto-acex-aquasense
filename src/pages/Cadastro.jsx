@@ -19,7 +19,7 @@ function Cadastro() {
     e.preventDefault();
 
     try {
-      const response = await fetch('3.142.165.61:5000/api/cadastro', {
+      const response = await fetch('http://api-aquasense.ddns.net:5000/api/cadastro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

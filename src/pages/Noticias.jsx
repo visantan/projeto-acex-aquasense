@@ -8,7 +8,7 @@ function Noticias() {
   useEffect(() => {
     const buscarNoticias = async () => {
       try {
-        const response = await fetch('3.142.165.61:5000/api/noticias');
+        const response = await fetch('http://api-aquasense.ddns.net:5000/api/noticias');
         const data = await response.json();
         setNoticias(data);
       } catch (error) {
