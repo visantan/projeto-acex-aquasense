@@ -21,8 +21,8 @@ function Dashboard() {
               <li><Link to="/dashboard/mapa">Mapa</Link></li>
               <li><Link to="/dashboard/contatos">Contatos</Link></li>
               <li><Link to="/dashboard/campanhas">Campanhas</Link></li>
-              <li><Link to="/dashboard/historico">Historico</Link></li>
-              <li><Link to="/dashboard/noticias">Noticias</Link></li>
+              <li><Link to="/dashboard/historico">Histórico</Link></li>
+              <li><Link to="/dashboard/noticias">Notícias</Link></li>
               {/* <li><Link to="/dashboard/login">Login</Link></li> */}
             </ul>
           </nav>
