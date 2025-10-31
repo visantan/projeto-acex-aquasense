@@ -41,7 +41,7 @@ function DashboardHome() {
     if (!ruaBusca.trim()) return;
 
     try {
-      const response = await fetch(`http://api-aquasense.ddns.net:5000/api/rua/${encodeURIComponent(ruaBusca.trim())}`);
+      const response = await fetch(`https://aquasense-api.ddns.net/api/rua/${encodeURIComponent(ruaBusca.trim())}`);
       if (!response.ok) {
         setResultado({
           nome: ruaBusca,
