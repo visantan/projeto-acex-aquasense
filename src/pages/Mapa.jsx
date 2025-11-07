@@ -9,6 +9,7 @@ import L from 'leaflet';
 
 // Corrige o ícone padrão do Leaflet usando arquivos da pasta public
 L.Icon.Default.mergeOptions({
+  iconRetinaUrl: '/leaflet/marker-icon-2x.png',
   iconUrl: '/leaflet/marker-icon.png',
   shadowUrl: '/leaflet/marker-shadow.png',
 });
