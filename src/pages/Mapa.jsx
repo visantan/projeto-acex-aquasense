@@ -1,3 +1,4 @@
+// src/pages/Mapa.jsx
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -6,14 +7,10 @@ import ruas from '../data/ruas';
 
 import L from 'leaflet';
 
-const markerIcon = new URL('leaflet/dist/images/marker-icon.png', import.meta.url).href;
-const markerShadow = new URL('leaflet/dist/images/marker-shadow.png', import.meta.url).href;
-
-delete L.Icon.Default.prototype._getIconUrl;
-
+// Corrige o ícone padrão do Leaflet usando arquivos da pasta public
 L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
+  iconUrl: '/leaflet/marker-icon.png',
+  shadowUrl: '/leaflet/marker-shadow.png',
 });
 
 function Mapa() {
@@ -21,7 +18,7 @@ function Mapa() {
     <div className="mapa-container">
       <h2>Mapa de Vazamentos e Obras</h2>
       <MapContainer
-        center={[-23.6639, -46.5383]}
+        center={[-23.6639, -46.5383]} // Santo André
         zoom={13}
         scrollWheelZoom={false}
         className="mapa"
